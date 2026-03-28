@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="imgs/5.png">
+    <title>Jeremiah Owuor | Professional Web Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .tab-contents { display: none; }
+        .tab-contents.active-tab { display: block; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .gradient-text { background: linear-gradient(to right, #60a5fa, #22d3ee); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        /* Animation for icons */
+        .service-card:hover i { transform: scale(1.1) rotate(5deg); transition: 0.3s; }
+    </style>
+</head>
+<body class="bg-[#0f172a] text-slate-200">
+
+    <nav class="fixed w-full z-50 bg-[#0f172a]/80 backdrop-blur-md border-b border-slate-800">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold gradient-text">Jeremiah.</h1>
+            <ul class="hidden md:flex space-x-8 text-sm font-medium uppercase tracking-widest">
+                <li><a href="#header" class="hover:text-blue-400 transition">Home</a></li>
+                <li><a href="#about" class="hover:text-blue-400 transition">About</a></li>
+                <li><a href="#services" class="hover:text-blue-400 transition">Services</a></li>
+                <li><a href="#portfolio" class="hover:text-blue-400 transition">Work</a></li>
+                <li><a href="#contact" class="hover:text-blue-400 transition">Contact</a></li>
+            </ul>
+            <div class="md:hidden text-2xl cursor-pointer text-blue-400" onclick="openmenu()"><i class="fas fa-bars"></i></div>
+        </div>
+    </nav>
+
+    <div id="mobile-nav" class="fixed inset-0 bg-[#0f172a] z-[60] flex flex-col items-center justify-center space-y-8 text-2xl font-bold translate-x-full transition-transform duration-300 md:hidden">
+        <div class="absolute top-6 right-6 text-3xl text-blue-400 cursor-pointer" onclick="closemenu()"><i class="fas fa-xmark"></i></div>
+        <a href="#header" class="hover:text-blue-400" onclick="closemenu()">Home</a>
+        <a href="#about" class="hover:text-blue-400" onclick="closemenu()">About</a>
+        <a href="#services" class="hover:text-blue-400" onclick="closemenu()">Services</a>
+        <a href="#portfolio" class="hover:text-blue-400" onclick="closemenu()">Work</a>
+        <a href="#contact" class="hover:text-blue-400" onclick="closemenu()">Contact</a>
+    </div>
+
+    <header id="header" class="min-h-screen flex items-center pt-20">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <span class="text-blue-400 font-semibold tracking-widest uppercase text-sm border-l-2 border-blue-500 pl-4">Available for New Projects</span>
+                <h1 class="text-5xl md:text-7xl font-bold mt-6 leading-tight">Hi, I'm <span class="text-white">Jeremiah</span><br> 
+                <span class="text-slate-500">Owuor</span></h1>
+                <p class="mt-6 text-slate-400 text-lg max-w-lg leading-relaxed text-balance">A <span class="text-blue-400 font-semibold">UI/UX Designer & Developer</span> creating intuitive digital solutions.</p>
+                <div class="mt-10 flex flex-wrap gap-4">
+                    <a href="#portfolio" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold transition shadow-lg shadow-blue-500/20">View My Work</a>
+                    <a href="imgs/ezora.docx" download class="border border-slate-700 hover:bg-slate-800 text-white px-8 py-4 rounded-xl font-bold transition">Download CV</a>
+                </div>
+            </div>
+            <div class="relative hidden md:block">
+                <div class="absolute -inset-4 bg-blue-500/10 blur-3xl rounded-full"></div>
+                <img src="imgs/jmy.png" class="relative rounded-3xl grayscale hover:grayscale-0 transition duration-700 shadow-2xl border border-slate-800">
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="py-24 bg-[#0b1120]">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-16 items-start">
+                <div class="md:col-span-5 relative">
+                     <img src="imgs/user.png" class="rounded-2xl w-full shadow-2xl">
+                     <div class="absolute -bottom-6 -right-6 bg-blue-600 p-6 rounded-2xl hidden lg:block">
+                         <p class="text-3xl font-bold text-white">4+</p>
+                         <p class="text-xs uppercase tracking-widest text-blue-100">Years Experience</p>
+                     </div>
+                </div>
+                <div class="md:col-span-7">
+                    <h2 class="text-4xl font-bold mb-6">About Me</h2>
+                    <p class="text-slate-400 leading-relaxed mb-8 text-lg">I transform complex requirements into intuitive digital products. With experience in UI/UX architecture and full-stack development, I focus on delivering excellence.</p>
+                    
+                    <div class="flex space-x-8 border-b border-slate-800 mb-8 overflow-x-auto">
+                        <button class="pb-4 border-b-2 border-blue-500 font-bold text-white tab-links active-link" onclick="opentab(event, 'skills')">Skills</button>
+                        <button class="pb-4 border-b-2 border-transparent text-slate-500 hover:text-white tab-links" onclick="opentab(event, 'experience')">Experience</button>
+                        <button class="pb-4 border-b-2 border-transparent text-slate-500 hover:text-white tab-links" onclick="opentab(event, 'education')">Education</button>
+                    </div>
+
+                    <div id="skills" class="tab-contents active-tab">
+                        <ul class="grid md:grid-cols-2 gap-y-6 gap-x-12">
+                            <li><span class="text-blue-400 font-bold block mb-1">UI/UX Design</span>Designing Web/App interfaces.</li>
+                            <li><span class="text-blue-400 font-bold block mb-1">Web Development</span>Full-cycle application development.</li>
+                            <li><span class="text-blue-400 font-bold block mb-1">Mobile APP Development</span>Designing and developing mobile applications.</li>
+                            <li><span class="text-blue-400 font-bold block mb-1">Graphic Design</span>Creating visually appealing graphics and layouts.</li>
+                            <li><span class="text-blue-400 font-bold block mb-1">API Integration</span>Seamless software connection.</li>
+                            <li><span class="text-blue-400 font-bold block mb-1">Digital Marketing</span>Strategic online presence.</li>
+                        </ul>
+                    </div>
+
+                    <div id="experience" class="tab-contents">
+                        <ul class="space-y-6">
+                            <li class="border-l-2 border-blue-500 pl-6"><span class="text-blue-400 font-bold">2021-Present</span><h4 class="text-white font-semibold">Full Stack Developer</h4><p class="text-sm text-slate-500">Jersar Digital</p></li>
+                            <li class="border-l-2 border-slate-700 pl-6"><span class="text-blue-400 font-bold">2020-2021</span><h4 class="text-white font-semibold">UX/UI Designer</h4><p class="text-sm text-slate-500">PELOA ENTERPRISES</p></li>
+                            <li class="border-l-2 border-slate-700 pl-6"><span class="text-blue-400 font-bold">2019-2020</span><h4 class="text-white font-semibold">ICT Specialist</h4><p class="text-sm text-slate-500">PELOA ENTERPRISES</p></li>
+                        </ul>
+                    </div>
+
+                    <div id="education" class="tab-contents">
+                        <ul class="grid md:grid-cols-2 gap-6">
+                            <li class="glass p-4 rounded-xl"><span class="text-blue-400 font-bold">2022</span><h4 class="text-white font-semibold">Full Stack Developer</h4><p class="text-sm text-slate-500">E-mobilis Technology Institute</p></li>
+                            <li class="glass p-4 rounded-xl"><span class="text-blue-400 font-bold">2020</span><h4 class="text-white font-semibold">Software Engineering</h4><p class="text-sm text-slate-500">Borabu Technical College</p></li>   
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-24">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-4">My Expertise</h2>
+            <p class="text-slate-500 mb-16 max-w-xl mx-auto">High-performance solutions tailored to scale your business and elevate your digital presence.</p>
+            
+            <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div class="service-card glass p-8 rounded-3xl hover:bg-blue-600/10 transition duration-300 border-slate-800 text-left flex flex-col justify-between">
+                    <div>
+                        <i class="fa-solid fa-laptop-code text-3xl text-blue-400 mb-6"></i>
+                        <h3 class="text-xl font-bold mb-3">Web & Software</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">Custom enterprise software and high-speed web applications built for performance.</p>
+                    </div>
+                    <button onclick="openService('web')" class="text-blue-400 font-bold hover:text-blue-300 transition text-sm flex items-center">
+                        Learn More <i class="fa-solid fa-plus ml-2"></i>
+                    </button>
+                </div>
+
+                <div class="service-card glass p-8 rounded-3xl hover:bg-blue-600/10 transition duration-300 border-slate-800 text-left flex flex-col justify-between">
+                    <div>
+                        <i class="fa-solid fa-wand-magic-sparkles text-3xl text-blue-400 mb-6"></i>
+                        <h3 class="text-xl font-bold mb-3">UI/UX Design</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">User-centric interfaces that blend aesthetic beauty with psychological flow.</p>
+                    </div>
+                    <button onclick="openService('uiux')" class="text-blue-400 font-bold hover:text-blue-300 transition text-sm flex items-center">
+                        Learn More <i class="fa-solid fa-plus ml-2"></i>
+                    </button>
+                </div>
+
+                <div class="service-card glass p-8 rounded-3xl hover:bg-blue-600/10 transition duration-300 border-slate-800 text-left flex flex-col justify-between">
+                    <div>
+                        <i class="fa-solid fa-mobile-screen text-3xl text-blue-400 mb-6"></i>
+                        <h3 class="text-xl font-bold mb-3">Mobile Apps</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">Native and cross-platform mobile experiences for iOS and Android devices.</p>
+                    </div>
+                    <button onclick="openService('mobile')" class="text-blue-400 font-bold hover:text-blue-300 transition text-sm flex items-center">
+                        Learn More <i class="fa-solid fa-plus ml-2"></i>
+                    </button>
+                </div>
+
+                <div class="service-card glass p-8 rounded-3xl hover:bg-blue-600/10 transition duration-300 border-slate-800 text-left flex flex-col justify-between">
+                    <div>
+                        <i class="fa-solid fa-palette text-3xl text-blue-400 mb-6"></i>
+                        <h3 class="text-xl font-bold mb-3">Graphic Design</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">Strong visual identities, brand guidelines, and high-impact marketing assets.</p>
+                    </div>
+                    <button onclick="openService('graphic')" class="text-blue-400 font-bold hover:text-blue-300 transition text-sm flex items-center">
+                        Learn More <i class="fa-solid fa-plus ml-2"></i>
+                    </button>
+                </div>
+
+                <div class="service-card glass p-8 rounded-3xl hover:bg-blue-600/10 transition duration-300 border-slate-800 text-left flex flex-col justify-between">
+                    <div>
+                        <i class="fa-solid fa-link text-3xl text-blue-400 mb-6"></i>
+                        <h3 class="text-xl font-bold mb-3">API Integration</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">Connecting your systems seamlessly with 3rd party services and automation.</p>
+                    </div>
+                    <button onclick="openService('api')" class="text-blue-400 font-bold hover:text-blue-300 transition text-sm flex items-center">
+                        Learn More <i class="fa-solid fa-plus ml-2"></i>
+                    </button>
+                </div>
+
+                <div class="service-card glass p-8 rounded-3xl hover:bg-blue-600/10 transition duration-300 border-slate-800 text-left flex flex-col justify-between">
+                    <div>
+                        <i class="fa-solid fa-bullhorn text-3xl text-blue-400 mb-6"></i>
+                        <h3 class="text-xl font-bold mb-3">Digital Marketing</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">Data-driven campaigns to increase your reach and maximize conversion rates.</p>
+                    </div>
+                    <button onclick="openService('marketing')" class="text-blue-400 font-bold hover:text-blue-300 transition text-sm flex items-center">
+                        Learn More <i class="fa-solid fa-plus ml-2"></i>
+                    </button>
+                </div>
+
+                <div class="service-card glass p-8 rounded-3xl hover:bg-blue-600/10 transition duration-300 border-slate-800 text-left flex flex-col justify-between lg:col-span-2">
+                    <div>
+                        <i class="fa-solid fa-magnifying-glass-chart text-3xl text-blue-400 mb-6"></i>
+                        <h3 class="text-xl font-bold mb-3">SEO Optimization</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">Ranking your business at the top of search results with organic, white-hat strategies.</p>
+                    </div>
+                    <button onclick="openService('seo')" class="text-blue-400 font-bold hover:text-blue-300 transition text-sm flex items-center">
+                        Learn More <i class="fa-solid fa-plus ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="service-modal" class="fixed inset-0 z-[100] hidden bg-[#0f172a]/95 backdrop-blur-md flex items-center justify-center p-6">
+        <div class="glass max-w-2xl w-full p-10 rounded-3xl relative animate-in fade-in zoom-in duration-300">
+            <button onclick="closeService()" class="absolute top-6 right-6 text-2xl text-slate-500 hover:text-blue-400 transition"><i class="fa-solid fa-xmark"></i></button>
+            <div id="modal-content">
+                </div>
+            <a href="#contact" onclick="closeService()" class="inline-block mt-8 bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-500 transition">Start this Project</a>
+        </div>
+    </div>
+
+    <script>
+        // Full Service Data Object
+        const serviceDetails = {
+            web: {
+                title: "Web & Software Development",
+                features: ["Full-stack Enterprise Solutions", "React/Next.js Applications", "Scalable Backend Architecture", "Progressive Web Apps (PWA)", "Legacy Code Modernization", "Cloud Deployment (AWS/Azure)"]
+            },
+            uiux: {
+                title: "UI/UX Design",
+                features: ["User Research & Personas", "Wireframing & Prototyping", "Interaction Design", "Visual Design Systems", "Usability Testing", "Accessibility (WCAG) Compliance"]
+            },
+            mobile: {
+                title: "Mobile App Development",
+                features: ["iOS & Android Development", "React Native Solutions", "Flutter App Creation", "App Store Optimization", "Biometric Authentication", "Offline-first Functionality"]
+            },
+            graphic: {
+                title: "Graphic Design",
+                features: ["Logo & Brand Identity", "Marketing Collateral", "Typography & Layout", "Vector Illustration", "Social Media Kits", "Print-ready Artwork"]
+            },
+            api: {
+                title: "API Integration",
+                features: ["REST & GraphQL Development", "Payment Gateway Integration", "CRM & ERP Syncing", "Third-party Webhooks", "OAuth Security Layers", "Microservices Communication"]
+            },
+            marketing: {
+                title: "Digital Marketing",
+                features: ["Social Media Strategy", "PPC Campaign Management", "Email Automation", "Content Strategy", "Conversion Rate Optimization (CRO)", "Analytical Reporting"]
+            },
+            seo: {
+                title: "SEO Optimization",
+                features: ["Technical SEO Audits", "Keyword Research & Strategy", "On-page Optimization", "Backlink Building", "Local SEO Performance", "Core Web Vitals Improvement"]
+            }
+        };
+
+        function openService(type) {
+            const data = serviceDetails[type];
+            const modal = document.getElementById('service-modal');
+            const content = document.getElementById('modal-content');
+            
+            content.innerHTML = `
+                <h2 class="text-3xl font-bold mb-4 text-white">${data.title}</h2>
+                <div class="h-1 w-20 bg-blue-500 mb-6"></div>
+                <p class="text-slate-400 mb-6 italic">Full Feature List:</p>
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    ${data.features.map(f => `<li class="flex items-center text-slate-200"><i class="fa-solid fa-check text-blue-400 mr-3"></i> ${f}</li>`).join('')}
+                </ul>
+            `;
+            
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Stop scrolling
+        }
+
+        function closeService() {
+            document.getElementById('service-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto'; // Enable scrolling
+        }
+    </script>
+
+<section id="portfolio" class="py-24 bg-[#0b1120]">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold mb-4">Selected Work</h2>
+            <p class="text-slate-500 max-w-lg mx-auto italic">Strategic digital solutions delivered across various industries.</p>
+        </div>
+
+        <div id="project-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <div class="group relative overflow-hidden rounded-3xl border border-slate-800 aspect-[4/5] bg-slate-900">
+                <img src="imgs/retailshop.jpg" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/20 to-transparent flex flex-col justify-end p-8">
+                    <span class="text-blue-400 text-[10px] font-bold uppercase tracking-widest mb-2">E-Commerce</span>
+                    <h3 class="text-xl font-bold text-white">Fashion Hub Africa</h3>
+                    <p class="text-slate-400 text-sm mt-2 mb-6">Full-scale retail platform with M-Pesa integration.</p>
+                    <a href="https://wa.me/254700410580?text=Hello%20Jeremiah,%20i%20am%20impressed%20by%20your%20work%20i%20would%20like%20to%20work%20with%20you,%20here%20is%20my%20project%20details.." target="_blank" class="inline-block mt-8 bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-500 transition">Start this Project</a>
+                </div>
+            </div>
+
+            <div class="group relative overflow-hidden rounded-3xl border border-slate-800 aspect-[4/5] bg-slate-900">
+                <img src="imgs/streamapp.png" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/20 to-transparent flex flex-col justify-end p-8">
+                    <span class="text-blue-400 text-[10px] font-bold uppercase tracking-widest mb-2">Entertainment</span>
+                    <h3 class="text-xl font-bold text-white">BeatStream App</h3>
+                    <p class="text-slate-400 text-sm mt-2 mb-6">Modern UI for local talent discovery and streaming.</p>
+                    <a href="https://wa.me/254700410580?text=Hello%20Jeremiah,%20i%20am%20impressed%20by%20your%20work%20i%20would%20like%20to%20work%20with%20you,%20here%20is%20my%20project%20details.." target="_blank" class="inline-block mt-8 bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-500 transition">Start this Project</a>
+                </div>
+            </div>
+
+            <div class="group relative overflow-hidden rounded-3xl border border-slate-800 aspect-[4/5] bg-slate-900">
+                <img src="imgs/realtime.png" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/20 to-transparent flex flex-col justify-end p-8">
+                    <span class="text-blue-400 text-[10px] font-bold uppercase tracking-widest mb-2">SaaS</span>
+                    <h3 class="text-xl font-bold text-white">Connecto Social</h3>
+                    <p class="text-slate-400 text-sm mt-2 mb-6">Real-time networking for professional creatives.</p>
+                    <a href="https://wa.me/254700410580?text=Hello%20Jeremiah,%20i%20am%20impressed%20by%20your%20work%20i%20would%20like%20to%20work%20with%20you,%20here%20is%20my%20project%20details.." target="_blank" class="inline-block mt-8 bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-500 transition">Start this Project </a>
+                </div>
+            </div>
+
+            <div class="group relative overflow-hidden rounded-3xl border border-slate-800 aspect-[4/5] bg-slate-900">
+                <img src="imgs/elit.png" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/20 to-transparent flex flex-col justify-end p-8">
+                    <span class="text-blue-400 text-[10px] font-bold uppercase tracking-widest mb-2">Corporate</span>
+                    <h3 class="text-xl font-bold text-white">Elite Logistics</h3>
+                    <p class="text-slate-400 text-sm mt-2 mb-6">High-performance tracking and booking portal.</p>
+                    <a href="https://wa.me/254700410580?text=Hello%20Jeremiah,%20i%20am%20impressed%20by%20your%20work%20i%20would%20like%20to%20work%20with%20you,%20here%20is%20my%20project%20details.." target="_blank" class="inline-block mt-8 bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-500 transition">Start this Project </a>
+                </div>
+            </div>
+
+            <div class="group relative overflow-hidden rounded-3xl border border-slate-800 aspect-[4/5] bg-slate-900">
+                <img src="imgs/pay.png" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/20 to-transparent flex flex-col justify-end p-8">
+                    <span class="text-blue-400 text-[10px] font-bold uppercase tracking-widest mb-2">Fintech</span>
+                    <h3 class="text-xl font-bold text-white">MicroPay Wallet</h3>
+                    <p class="text-slate-400 text-sm mt-2 mb-6">Secure digital transactions and loan management.</p>
+                    <a href="https://wa.me/254700410580?text=Hello%20Jeremiah,%20i%20am%20impressed%20by%20your%20work%20i%20would%20like%20to%20work%20with%20you,%20here%20is%20my%20project%20details.." target="_blank" class="inline-block mt-8 bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-500 transition">Start this Project </a>
+                </div>
+            </div>
+
+            <div class="group relative overflow-hidden rounded-3xl border border-slate-800 aspect-[4/5] bg-slate-900">
+                <img src="imgs/realestate.png" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/20 to-transparent flex flex-col justify-end p-8">
+                    <span class="text-blue-400 text-[10px] font-bold uppercase tracking-widest mb-2">Real Estate</span>
+                    <h3 class="text-xl font-bold text-white">Urban Nest Properties</h3>
+                    <p class="text-slate-400 text-sm mt-2 mb-6">Interactive property discovery and virtual tours.</p>
+                    <a href="https://wa.me/254700410580?text=Hello%20Jeremiah,%20i%20am%20impressed%20by%20your%20work%20i%20would%20like%20to%20work%20with%20you,%20here%20is%20my%20project%20details.." target="_blank" class="inline-block mt-8 bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-500 transition">Start this Project </a>
+                </div>
+            </div>
+
+            <div class="hidden-project hidden group relative overflow-hidden rounded-3xl border border-slate-800 aspect-[4/5] bg-slate-900">
+                <img src="imgs/work-6.jpg" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0f172a] p-8 flex flex-col justify-end">
+                    <span class="text-blue-400 text-[10px] uppercase font-bold mb-2">Healthcare</span>
+                    <h3 class="text-xl font-bold text-white">MediCare Portal</h3>
+                    <p class="text-slate-400 text-sm mt-2 mb-6">Patient management and appointment scheduling.</p>
+                    <a href="https://wa.me/254700410580?text=Hello%20Jeremiah,%20i%20am%20impressed%20by%20your%20work%20i%20would%20like%20to%20work%20with%20you,%20here%20is%20my%20project%20details.." target="_blank" class="inline-block mt-8 bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-500 transition">Start this Project </a>
+                </div>
+            </div>
+
+            <div class="hidden-project hidden group relative overflow-hidden rounded-3xl border border-slate-800 aspect-[4/5] bg-slate-900">
+                <img src="imgs/farm.png" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0f172a] p-8 flex flex-col justify-end">
+                    <span class="text-blue-400 text-[10px] uppercase font-bold mb-2">Agriculture</span>
+                    <h3 class="text-xl font-bold text-white">SmartFarmer IoT</h3>
+                    <p class="text-slate-400 text-sm mt-2 mb-6">Monitoring soil health via real-time sensors.</p>
+                    <a href="https://wa.me/254700410580?text=Hello%20Jeremiah,%20i%20am%20impressed%20by%20your%20work%20i%20would%20like%20to%20work%20with%20you,%20here%20is%20my%20project%20details.." target="_blank" class="inline-block mt-8 bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-500 transition">Start this Project </a>
+                </div>
+            </div>
+
+            <div class="hidden-project hidden group relative overflow-hidden rounded-3xl border border-slate-800 aspect-[4/5] bg-slate-900">
+                <img src="imgs/work-6.jpg" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0f172a] p-8 flex flex-col justify-end">
+                    <span class="text-blue-400 text-[10px] uppercase font-bold mb-2">Education</span>
+                    <h3 class="text-xl font-bold text-white">Elimu LMS</h3>
+                    <p class="text-slate-400 text-sm mt-2 mb-6">Modern learning management for local schools.</p>
+                    <a href="https://wa.me/254700410580?text=Hello%20Jeremiah,%20i%20am%20impressed%20by%20your%20work%20i%20would%20like%20to%20work%20with%20you,%20here%20is%20my%20project%20details.." target="_blank" class="inline-block mt-8 bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-500 transition">Start this Project </a>
+                </div>
+            </div>
+
+            <div class="hidden-project hidden group relative overflow-hidden rounded-3xl border border-slate-800 aspect-[4/5] bg-slate-900">
+                <img src="imgs/work-6.jpg" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0f172a] p-8 flex flex-col justify-end">
+                    <span class="text-blue-400 text-[10px] uppercase font-bold mb-2">Automotive</span>
+                    <h3 class="text-xl font-bold text-white">CarCheck Kenya</h3>
+                    <p class="text-slate-400 text-sm mt-2 mb-6">Service history and car valuation platform.</p>
+                    <a href="https://wa.me/254700410580?text=Hello%20Jeremiah,%20i%20am%20impressed%20by%20your%20work%20i%20would%20like%20to%20work%20with%20you,%20here%20is%20my%20project%20details.." target="_blank" class="inline-block mt-8 bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-500 transition">Start this Project </a>
+                </div>
+            </div>
+
+            <div class="hidden-project hidden group relative overflow-hidden rounded-3xl border border-slate-800 aspect-[4/5] bg-slate-900">
+                <img src="imgs/work-6.jpg" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0f172a] p-8 flex flex-col justify-end">
+                    <span class="text-blue-400 text-[10px] uppercase font-bold mb-2">Hospitality</span>
+                    <h3 class="text-xl font-bold text-white">Safari Booking</h3>
+                    <p class="text-slate-400 text-sm mt-2 mb-6">Custom tour packages and itinerary builder.</p>
+                    <a href="https://wa.me/254700410580?text=Hello%20Jeremiah,%20i%20am%20impressed%20by%20your%20work%20i%20would%20like%20to%20work%20with%20you,%20here%20is%20my%20project%20details.." target="_blank" class="inline-block mt-8 bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-500 transition">Start this Project </a>
+                </div>
+            </div>
+
+            <div class="hidden-project hidden group relative overflow-hidden rounded-3xl border border-slate-800 aspect-[4/5] bg-slate-900">
+                <img src="imgs/work-6.jpg" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0f172a] p-8 flex flex-col justify-end">
+                    <span class="text-blue-400 text-[10px] uppercase font-bold mb-2">Fitness</span>
+                    <h3 class="text-xl font-bold text-white">StrongFit Web</h3>
+                    <p class="text-slate-400 text-sm mt-2 mb-6">Personal training schedules and diet tracker.</p>
+                    <a href="https://wa.me/254700410580?text=Hello%20Jeremiah,%20i%20am%20impressed%20by%20your%20work%20i%20would%20like%20to%20work%20with%20you,%20here%20is%20my%20project%20details.." target="_blank" class="inline-block mt-8 bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-500 transition">Start this Project </a>
+                </div>
+            </div>
+
+            <div class="hidden-project hidden group relative overflow-hidden rounded-3xl border border-slate-800 aspect-[4/5] bg-slate-900">
+                <img src="imgs/work-6.jpg" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0f172a] p-8 flex flex-col justify-end">
+                    <span class="text-blue-400 text-[10px] uppercase font-bold mb-2">Portfolio</span>
+                    <h3 class="text-xl font-bold text-white">Architecture Showroom</h3>
+                    <p class="text-slate-400 text-sm mt-2 mb-6">Visual portfolio for design firms.</p>
+                    <a href="https://wa.me/254700410580?text=Hello%20Jeremiah,%20i%20am%20impressed%20by%20your%20work%20i%20would%20like%20to%20work%20with%20you,%20here%20is%20my%20project%20details.." target="_blank" class="inline-block mt-8 bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-500 transition">Start this Project </a> 
+                </div>
+            </div>
+
+            <div class="hidden-project hidden group relative overflow-hidden rounded-3xl border border-slate-800 aspect-[4/5] bg-slate-900">
+                <img src="imgs/work-6.jpg" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0f172a] p-8 flex flex-col justify-end">
+                    <span class="text-blue-400 text-[10px] uppercase font-bold mb-2">News</span>
+                    <h3 class="text-xl font-bold text-white">Daily Pulse Portal</h3>
+                    <p class="text-slate-400 text-sm mt-2 mb-6">High-speed news aggregator and blog.</p>
+                    <a href="https://wa.me/254700410580?text=Hello%20Jeremiah,%20i%20am%20impressed%20by%20your%20work%20i%20would%20like%20to%20work%20with%20you,%20here%20is%20my%20project%20details.." target="_blank" class="inline-block mt-8 bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-500 transition">Start this Project </a>
+                </div>
+            </div>
+
+            <div class="hidden-project hidden group relative overflow-hidden rounded-3xl border border-slate-800 aspect-[4/5] bg-slate-900">
+                <img src="imgs/work-6.jpg" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0f172a] p-8 flex flex-col justify-end">
+                    <span class="text-blue-400 text-[10px] uppercase font-bold mb-2">Cleaning</span>
+                    <h3 class="text-xl font-bold text-white">Sparkle Booking</h3>
+                    <p class="text-slate-400 text-sm mt-2 mb-6">On-demand domestic service app.</p>
+                    <a href="https://wa.me/254700410580?text=Hello%20Jeremiah,%20i%20am%20impressed%20by%20your%20work%20i%20would%20like%20to%20work%20with%20you,%20here%20is%20my%20project%20details.." target="_blank" class="inline-block mt-8 bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-500 transition">Start this Project </a>
+                </div>
+            </div>
+
+            <div class="hidden-project hidden group relative overflow-hidden rounded-3xl border border-slate-800 aspect-[4/5] bg-slate-900">
+                <img src="imgs/work-6.jpg" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0f172a] p-8 flex flex-col justify-end">
+                    <span class="text-blue-400 text-[10px] uppercase font-bold mb-2">Delivery</span>
+                    <h3 class="text-xl font-bold text-white">Flash Courier</h3>
+                    <p class="text-slate-400 text-sm mt-2 mb-6">Boda-boda tracking and delivery system.</p>
+                    <a href="https://wa.me/254700410580?text=Hello%20Jeremiah,%20i%20am%20impressed%20by%20your%20work%20i%20would%20like%20to%20work%20with%20you,%20here%20is%20my%20project%20details.." target="_blank" class="inline-block mt-8 bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-500 transition">Start this Project </a>
+                </div>
+            </div>
+
+        </div>
+
+        <button id="view-all-btn" onclick="toggleProjects()" class="block mx-auto mt-16 bg-blue-600 text-white px-12 py-4 rounded-2xl font-bold hover:bg-blue-500 transition shadow-lg shadow-blue-500/20">
+            View All Projects
+        </button>
+    </div>
+</section>
+
+<script>
+    function toggleProjects() {
+        const hiddenProjects = document.querySelectorAll('.hidden-project');
+        const btn = document.getElementById('view-all-btn');
+        let isOpening = btn.innerText === "View All Projects";
+        
+        hiddenProjects.forEach((proj, index) => {
+            if (isOpening) {
+                proj.classList.remove('hidden');
+                // Staggered animation effect
+                setTimeout(() => {
+                    proj.classList.add('animate-fade-in');
+                }, index * 100);
+            } else {
+                proj.classList.add('hidden');
+            }
+        });
+
+        if (isOpening) {
+            btn.innerText = "Show Less";
+        } else {
+            btn.innerText = "View All Projects";
+            document.getElementById('portfolio').scrollIntoView();
+        }
+    }
+</script>
+
+<script>
+    function toggleProjects() {
+        const hiddenProjects = document.querySelectorAll('.hidden-project');
+        const btn = document.getElementById('view-all-btn');
+        
+        hiddenProjects.forEach(proj => {
+            if (proj.classList.contains('hidden')) {
+                proj.classList.remove('hidden');
+                proj.classList.add('animate-in', 'fade-in', 'slide-in-from-bottom-10', 'duration-700');
+                btn.innerText = "Show Less";
+            } else {
+                proj.classList.add('hidden');
+                btn.innerText = "View All Projects";
+                document.getElementById('portfolio').scrollIntoView();
+            }
+        });
+    }
+</script>
+
+<section id="projectprocess" class="py-24 bg-slate-800">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold mb-4">Launch Your Project in 4 Weeks</h2>
+            <p class="text-slate-500 max-w-lg mx-auto italic">A proven approach to delivering exceptional digital solutions.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-12">
+            <div class="text-center">
+                <i class="fa-solid fa-lightbulb text-4xl text-blue-400 mb-6"></i>
+                <h3 class="text-xl font-bold mb-3">Discovery & Strategy</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">In-depth research and strategic planning to align with your business goals, audience insights, and market analysis.</p>
+            </div>
+            <div class="text-center">
+                <i class="fa-solid fa-code text-4xl text-blue-400 mb-6"></i>
+                <h3 class="text-xl font-bold mb-3">Design</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Agile development with iterative design, ensuring a user-centric approach and high-quality user interface that scales.</p>
+            </div>
+            <div class="text-center">
+                <i class="fa-solid fa-rocket text-4xl text-blue-400 mb-6"></i>
+                <h3 class="text-xl font-bold mb-3">Development</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Rapid prototyping and iterative development to bring your ideas to life with cutting-edge technology.</p>
+            </div>
+            <div class="text-center">
+                <i class="fa-solid fa-chart-line text-4xl text-blue-400 mb-6"></i>
+                <h3 class="text-xl font-bold mb-3">Testing & Deployment</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Comprehensive testing and seamless deployment to ensure a smooth launch and optimal performance.</p>
+            </div>
+            <div class="text-center">
+                <i class="fa-solid fa-handshake text-4xl text-blue-400 mb-6"></i>
+                <h3 class="text-xl font-bold mb-3">Launch</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Strategic launch planning and execution to maximize impact and ensure a successful market entry.</p>
+            </div>
+            <div class="text-center">
+                <i class="fa-solid fa-chart-pie text-4xl text-blue-400 mb-6"></i>
+                <h3 class="text-xl font-bold mb-3">Growth & Optimization</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Ongoing support and optimization to drive growth, enhance user experience, and adapt to evolving market needs.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section id="testimonials" class="py-24 bg-[#0f172a]">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold mb-4">Client Feedback</h2>
+            <p class="text-slate-500 max-w-lg mx-auto italic">What industry leaders say about working with Jeremiah.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="glass p-8 rounded-3xl border-slate-800 hover:border-blue-500 transition duration-500 flex flex-col justify-between">
+                <div>
+                    <div class="flex text-yellow-400 mb-4 text-xs">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-slate-300 leading-relaxed italic mb-8">"Jeremiah transformed our outdated platform into a high-converting masterpiece. His attention to UI/UX detail is world-class. Highly recommended for any serious enterprise project."</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-blue-500 bg-slate-800">
+                        <img src="imgs/client-1.jpg" alt="Client" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold text-sm">Sarah Jenkins</h4>
+                        <p class="text-blue-400 text-xs uppercase tracking-tighter">CEO, TechFlow Solutions</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass p-8 rounded-3xl border-slate-800 hover:border-blue-500 transition duration-500 flex flex-col justify-between">
+                <div>
+                    <div class="flex text-yellow-400 mb-4 text-xs">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-slate-300 leading-relaxed italic mb-8">"The API integrations he built for our logistics app were seamless. We saw a 40% increase in operational efficiency within the first month of launch."</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-blue-500 bg-slate-800">
+                        <img src="imgs/client-2.jpg" alt="Client" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold text-sm">David Omondi</h4>
+                        <p class="text-blue-400 text-xs uppercase tracking-tighter">Director, Elite Logistics</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass p-8 rounded-3xl border-slate-800 hover:border-blue-500 transition duration-500 flex flex-col justify-between">
+                <div>
+                    <div class="flex text-yellow-400 mb-4 text-xs">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="text-slate-300 leading-relaxed italic mb-8">"Exceeded all expectations. Jeremiah isn't just a developer; he's a strategic partner who cares about your business growth as much as the code."</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-blue-500 bg-slate-800">
+                        <img src="imgs/client-3.jpg" alt="Client" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold text-sm">Elena Rodriguez</h4>
+                        <p class="text-blue-400 text-xs uppercase tracking-tighter">Founder, Urban Nest</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section id="contact" class="py-24 bg-[#0b1120]">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16">
+            <div>
+                <h2 class="text-4xl font-bold mb-6">Let's Connect</h2>
+                <div class="space-y-8 mt-12">
+                    <div class="flex items-center space-x-6">
+                        <div class="w-14 h-14 glass rounded-2xl flex items-center justify-center text-2xl text-blue-400"><i class="fa-solid fa-paper-plane"></i></div>
+                        <div>
+                            <p class="text-xs uppercase text-slate-500 tracking-widest">Email</p>
+                            <p class="text-lg font-semibold">jeremiahowuor879@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-6">
+                        <div class="w-14 h-14 glass rounded-2xl flex items-center justify-center text-2xl text-blue-400"><i class="fa-solid fa-phone"></i></div>
+                        <div>
+                            <p class="text-xs uppercase text-slate-500 tracking-widest">Phone</p>
+                            <p class="text-lg font-semibold">+254 700 410 580</p>
+                        </div>
+                    </div>
+                    <div class="flex space-x-4 pt-8">
+                        <a href="#" class="w-12 h-12 glass rounded-xl flex items-center justify-center hover:bg-blue-600 transition hover:text-white"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-12 h-12 glass rounded-xl flex items-center justify-center hover:bg-blue-600 transition hover:text-white"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="w-12 h-12 glass rounded-xl flex items-center justify-center hover:bg-blue-600 transition hover:text-white"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="glass p-10 rounded-3xl border-slate-800">
+                <form class="space-y-4">
+                    <input type="text" placeholder="Your Name" class="w-full bg-[#0b1120] border border-slate-800 p-4 rounded-xl focus:border-blue-500 outline-none transition" required>
+                    <input type="email" placeholder="Your Email" class="w-full bg-[#0b1120] border border-slate-800 p-4 rounded-xl focus:border-blue-500 outline-none transition" required>
+                    <textarea rows="6" placeholder="Project Description" class="w-full bg-[#0b1120] border border-slate-800 p-4 rounded-xl focus:border-blue-500 outline-none transition"></textarea>
+                    <button type="submit" class="w-full bg-blue-600 py-4 rounded-xl font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-500/20">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-slate-800 bg-[#0b1120] text-center">
+        <p class="text-slate-500 text-sm italic">Copyright &copy; 2026 Jeremiah Owuor. Built with Excellence.</p>
+    </footer>
+
+    <script>
+        // Tab Functionality
+        function opentab(evt, tabName) {
+            const tabcontents = document.querySelectorAll(".tab-contents");
+            const tablinks = document.querySelectorAll(".tab-links");
+            
+            tabcontents.forEach(tab => tab.style.display = "none");
+            tablinks.forEach(link => {
+                link.classList.remove("border-blue-500", "text-white", "active-link");
+                link.classList.add("border-transparent", "text-slate-500");
+            });
+
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.classList.add("border-blue-500", "text-white", "active-link");
+            evt.currentTarget.classList.remove("border-transparent", "text-slate-500");
+        }
+
+        // Mobile Menu Functions
+        const mobileNav = document.getElementById('mobile-nav');
+        function openmenu() { mobileNav.classList.remove('translate-x-full'); }
+        function closemenu() { mobileNav.classList.add('translate-x-full'); }
+    </script>
+</body>
+</html>
